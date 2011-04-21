@@ -1,0 +1,24 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.mgreau.mvnbook</groupId>
+        <artifactId>mvnbook-parent</artifactId>
+        <version>0.3</version>
+    </parent>
+
+    <artifactId>mvnbook-entry-web</artifactId>
+    <version>1.0.0-12</version>
+    <packaging>pom</packaging>
+
+    <name>mvnbook-entry-web</name>
+    <description>Reactor pour l'application Web</description>
+    <scm>
+        <developerConnection>scm:svn:svn://92.243.13.123/chapitre5/mvnbook-entry-web/tags/mvnbook-entry-web-1.0.0-12</developerConnection>
+    </scm>
+    <modules>
+        <module>mvnbook-persistence</module>
+        <module>mvnbook-service</module>
+        <module>mvnbook-webapp</module>
+    </modules>
+</project>

@@ -1,0 +1,39 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.mgreau.mvnbook</groupId>
+		<artifactId>mvnbook-entry-web</artifactId>
+		<version>1.0.0-12</version>
+	</parent>
+
+	<artifactId>mvnbook-service</artifactId>
+
+	<name>mvnbook-service</name>
+	<url>http://mvnbook.mgreau.com/sites/mvnbook-service</url>
+	<description>Services de l'application</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>mvnbook-persistence</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+        <!-- Tests -->
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>mvnbook-persistence</artifactId>
+			<version>${project.version}</version>
+			<classifier>tests</classifier>
+		</dependency>
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb-j5</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+	</dependencies>
+
+</project>
