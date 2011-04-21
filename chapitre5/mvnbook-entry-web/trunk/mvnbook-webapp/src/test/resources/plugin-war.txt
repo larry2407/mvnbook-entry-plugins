@@ -1,0 +1,32 @@
+org.apache.maven.plugins:maven-war-plugin:2.1.1
+
+Name: Maven WAR Plugin
+Description: Builds a Web Application Archive (WAR) file from the project
+  output and its dependencies.
+Group Id: org.apache.maven.plugins
+Artifact Id: maven-war-plugin
+Version: 2.1.1
+Goal Prefix: war
+
+This plugin has 5 goals:
+
+war:exploded
+  Description: Create an exploded webapp in a specified directory.
+
+war:help
+  Description: Display help information on maven-war-plugin.
+    Call
+      mvn war:help -Ddetail=true -Dgoal=<goal-name>
+    to display parameter details.
+
+war:inplace
+  Description: Generate the webapp in the WAR source directory.
+
+war:manifest
+  Description: Generate a manifest for this webapp. The manifest file is
+    created in the warSourceDirectory.
+
+war:war
+  Description: Build a WAR file.
+
+For more information, run 'mvn help:describe [...] -Ddetail'

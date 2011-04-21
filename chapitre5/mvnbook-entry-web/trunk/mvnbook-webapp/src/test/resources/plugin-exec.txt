@@ -1,0 +1,25 @@
+org.codehaus.mojo:exec-maven-plugin:1.2
+
+Name: Exec Maven Plugin
+Description: A plugin to allow execution of system and Java programs
+Group Id: org.codehaus.mojo
+Artifact Id: exec-maven-plugin
+Version: 1.2
+Goal Prefix: exec
+
+This plugin has 3 goals:
+
+exec:exec
+  Description: A Plugin for executing external programs.
+
+exec:help
+  Description: Display help information on exec-maven-plugin.
+    Call
+      mvn exec:help -Ddetail=true -Dgoal=<goal-name>
+    to display parameter details.
+
+exec:java
+  Description: Executes the supplied java class in the current VM with the
+    enclosing project's dependencies as classpath.
+
+For more information, run 'mvn help:describe [...] -Ddetail'
