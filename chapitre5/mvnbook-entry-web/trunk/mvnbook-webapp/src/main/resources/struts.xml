@@ -3,56 +3,59 @@
           "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"       
           "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-    <constant name="struts.enable.DynamicMethodInvocation"
-        value="false" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
 
-    <package name="struts-mvnbook" namespace="/" extends="struts-default">
-        <default-action-ref name="home" />
+	<package name="struts-mvnbook" namespace="/" extends="struts-default">
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+		
+		<default-action-ref name="home" />
 
-        <global-results>
-            <result name="error">pages/error.jsp</result>
-            <result name="Exception">pages/error.jsp</result>
-        </global-results>
+		<global-results>
+			<result type="tiles" name="error">error-page</result>
+			<result type="tiles" name="Exception">error-page</result>
+		</global-results>
 
-        <global-exception-mappings>
-            <exception-mapping exception="java.lang.Exception"
-                result="Exception" />
-        </global-exception-mappings>
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception"
+				result="Exception" />
+		</global-exception-mappings>
 
-        <action name="home" class="com.mgreau.mvnbook.action.IndexAction">
-            <result name="success">index.jsp</result>
-        </action>
+		<action name="home" class="com.mgreau.mvnbook.action.IndexAction">
+			<result type="tiles" name="success">default-page</result>
+		</action>
 
-        <action name="uploadPlugin"
-            class="com.mgreau.mvnbook.action.UploadPluginAction" method="display">
-            <result name="none">pages/upload.jsp</result>
-            <result name="input">pages/upload.jsp</result>
-        </action>
+		<action name="uploadPlugin" class="com.mgreau.mvnbook.action.UploadPluginAction"
+			method="display">
+			<result type="tiles" name="none">upload-page</result>
+			<result type="tiles" name="input">upload-page</result>
+		</action>
 
-        <action name="showPlugin"
-            class="com.mgreau.mvnbook.action.UploadPluginAction" >
-            <interceptor-ref name="exception" />
-            <interceptor-ref name="i18n" />
-            
-             <interceptor-ref name="params">
-                <param name="excludeParams">dojo\..*,^struts\..*</param>
-            </interceptor-ref>
-            <interceptor-ref name="servletConfig" />
-            <interceptor-ref name="fileUpload">
-            </interceptor-ref>
-            <interceptor-ref name="params">
-                <param name="excludeParams">dojo\..*,^struts\..*</param>
-            </interceptor-ref>
-            <interceptor-ref name="validation">
-                <param name="excludeMethods">input,back,cancel,browse</param>
-            </interceptor-ref>
-            <interceptor-ref name="workflow">
-                <param name="excludeMethods">input,back,cancel,browse</param>
-            </interceptor-ref>
+		<action name="showPlugin" class="com.mgreau.mvnbook.action.UploadPluginAction">
+			<interceptor-ref name="exception" />
+			<interceptor-ref name="i18n" />
 
-            <result name="success">pages/show.jsp</result>
-            <result name="input">pages/upload.jsp</result>
-        </action>
+			<interceptor-ref name="params">
+				<param name="excludeParams">dojo\..*,^struts\..*</param>
+			</interceptor-ref>
+			<interceptor-ref name="servletConfig" />
+			<interceptor-ref name="fileUpload">
+			</interceptor-ref>
+			<interceptor-ref name="params">
+				<param name="excludeParams">dojo\..*,^struts\..*</param>
+			</interceptor-ref>
+			<interceptor-ref name="validation">
+				<param name="excludeMethods">input,back,cancel,browse</param>
+			</interceptor-ref>
+			<interceptor-ref name="workflow">
+				<param name="excludeMethods">input,back,cancel,browse</param>
+			</interceptor-ref>
 
-    </package>
+			<result type="tiles" name="success">show-page</result>
+			<result type="tiles" name="input">upload-page</result>
+		</action>
+
+	</package>
 </struts>
