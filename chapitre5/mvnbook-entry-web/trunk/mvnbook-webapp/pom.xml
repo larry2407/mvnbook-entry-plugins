@@ -44,6 +44,7 @@
             <version>2.2.1</version>
             <scope>test</scope>
         </dependency>
+        <!-- 
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
@@ -54,11 +55,20 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jsp-api</artifactId>
             <version>2.0</version>
+            <scope>provided</scope>
         </dependency>
+         -->
         <dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb-j5</artifactId>
+            <scope>compile</scope>
         </dependency>
+        
+        <dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-tiles-plugin</artifactId>
+			<version>2.2.1.1</version>
+		</dependency>
     </dependencies>
 
     <build>

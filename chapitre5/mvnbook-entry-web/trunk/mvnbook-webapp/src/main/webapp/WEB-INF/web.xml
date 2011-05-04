@@ -7,6 +7,10 @@
 	<listener>
 		<listener-class>com.mgreau.mvnbook.listener.WebListener</listener-class>
 	</listener>
+	
+	<listener>
+		<listener-class>com.mgreau.mvnbook.listener.GuiceLifecycleListener</listener-class>
+	</listener>
 
 	<filter>
 		<filter-name>guice</filter-name>
@@ -27,7 +31,7 @@
         <mime-type>application/xml</mime-type>
     </mime-mapping>
 
-	<!-- Utilisation des tiles pour le layout 
+	<!-- Utilisation des tiles pour le layout -->
 	<listener>
 		<listener-class>org.apache.struts2.tiles.StrutsTilesListener</listener-class>
 	</listener>
@@ -36,5 +40,4 @@
 		<param-name>org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG</param-name>
 		<param-value>/WEB-INF/tiles/tiles-mvnbook.xml</param-value>
 	</context-param>
-	-->
 </web-app>

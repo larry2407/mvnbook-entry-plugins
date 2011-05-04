@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN" 
+"http://struts.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+	<definition name="default-page" template="/layout/default-layout.jsp">
+		<put-attribute name="header" value="/layout/header.jsp" />
+		<put-attribute name="footer" value="/layout/footer.jsp" />
+		<put-attribute name="sidebar-left" value="/layout/sidebar-left.jsp" />
+		<put-attribute name="sidebar-right" value="/layout/sidebar-right.jsp" />
+		<put-attribute name="content" value="/index.jsp" />
+	</definition>
+	
+	<definition name="upload-page" extends="default-page">
+		<put-attribute name="content" value="/pages/upload.jsp" />
+	</definition>
+	
+	<definition name="show-page" extends="default-page">
+		<put-attribute name="content" value="/pages/show.jsp" />
+	</definition>
+	
+	<definition name="error-page" extends="default-page">
+		<put-attribute name="content" value="/pages/error.jsp" />
+	</definition>
+		
+</tiles-definitions>
