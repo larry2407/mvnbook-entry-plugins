@@ -25,7 +25,8 @@
 	</prerequisites>
 
 	<scm>
-		<developerConnection>scm:svn:svn://92.243.13.123/chapitre5/mvnbook-parent/trunk</developerConnection>
+		<connection>scm:svn:http://mvnbook-entry-plugins.googlecode.com/svn/chapitre5/mvnbook-parent/trunk/</connection>
+		<developerConnection>scm:svn:https://mvnbook-entry-plugins.googlecode.com/svn/chapitre5/mvnbook-parent/trunk/</developerConnection>
 	</scm>
 	<ciManagement>
 		<system>Jenkins</system>
@@ -62,7 +63,7 @@
 		<version.deploy.plugin>2.5</version.deploy.plugin>
 		<version.dependency.plugin>2.1</version.dependency.plugin>
 		<version.ear.plugin>2.5</version.ear.plugin>
-		<version.failsafe.plugin>2.8</version.failsafe.plugin>
+		<version.failsafe.plugin>2.8.1</version.failsafe.plugin>
 		<version.install.plugin>2.3.1</version.install.plugin>
 		<version.javadoc.plugin>2.7</version.javadoc.plugin>
 		<version.jar.plugin>2.3.1</version.jar.plugin>
@@ -76,8 +77,8 @@
 		<version.shade.plugin>1.4</version.shade.plugin>
 		<version.site.plugin>3.0-beta-3</version.site.plugin>
 		<version.source.plugin>2.1.2</version.source.plugin>
-		<version.surefire.plugin>2.8</version.surefire.plugin>
-		<version.surefire.report.plugin>2.8</version.surefire.report.plugin>
+		<version.surefire.plugin>2.8.1</version.surefire.plugin>
+		<version.surefire.report.plugin>2.8.1</version.surefire.report.plugin>
 		<version.tomcat.plugin>1.1</version.tomcat.plugin>
 		<version.war.plugin>2.1.1</version.war.plugin>
 		<!-- maven -->
