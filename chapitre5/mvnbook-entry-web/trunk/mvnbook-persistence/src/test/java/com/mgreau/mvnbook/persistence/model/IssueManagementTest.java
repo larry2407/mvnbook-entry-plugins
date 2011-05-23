@@ -10,10 +10,14 @@ import javax.validation.ValidatorFactory;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class IssueManagementTest {
 
     private static Validator validator;
+    
+    private static Logger LOGGER = LoggerFactory.getLogger(IssueManagementTest.class);
 
     @BeforeClass
     public static void setUp() {
@@ -49,8 +53,9 @@ public class IssueManagementTest {
 
     	Set<ConstraintViolation<IssueManagement>> constraintViolations =
             validator.validate(im);
-
+    	
     	assertEquals(1, constraintViolations.size());
+    	LOGGER.info("Test pour encodage caractères");
         assertEquals("L'URL est erronée.", constraintViolations.iterator().next().getMessage());
     }
 
