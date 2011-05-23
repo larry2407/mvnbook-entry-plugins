@@ -4,7 +4,7 @@ package com.mgreau.mvnbook.persistence.model;
  * Le type de plugins, pour la construction du projet, pour la génération de
  * rapport ou les deux.
  * 
- * @author mgreau
+ * @author Maxime Gréau <dev@mgreau.com>
  * 
  */
 public enum Type {
