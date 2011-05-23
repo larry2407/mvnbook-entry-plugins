@@ -7,6 +7,7 @@ import javax.persistence.Query;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
+import com.google.inject.persist.Transactional;
 import com.mgreau.mvnbook.persistence.model.Category;
 import com.mgreau.mvnbook.persistence.model.Plugin;
 import com.mgreau.mvnbook.persistence.model.Type;
@@ -31,6 +32,7 @@ public class JpaPluginDao extends JpaDao {
 	 *            le {@link Type} recherché
 	 * @return une liste de plugin
 	 */
+	@Transactional
 	public List<Plugin> findByType(Type type) {
 		lastEm = em.get();
 		Query q = lastEm
@@ -40,6 +42,7 @@ public class JpaPluginDao extends JpaDao {
 		return (List<Plugin>) q.getResultList();
 	}
 	
+	@Transactional
 	public List<Plugin> findByCategory(Category category) {
 		lastEm = em.get();
 		Query q = lastEm
