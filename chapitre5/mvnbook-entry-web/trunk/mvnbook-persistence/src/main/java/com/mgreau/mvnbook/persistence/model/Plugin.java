@@ -24,7 +24,9 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.NotBlank;
 
 /**
- * Un plugin pour Apache Maven
+ * Un plugin au sens Apache Maven
+ * 
+ * @author Maxime Gréau <dev@mgreau.com>
  */
 @Entity
 @Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "groupId",
@@ -58,7 +60,7 @@ public class Plugin implements Serializable {
 	private String description;
 
 	/** La catégorie du plugin */
-	@ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE} )
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	private Category category;
 
 	/** Type de plugin */
@@ -66,25 +68,25 @@ public class Plugin implements Serializable {
 	private Type type;
 
 	/** Gestionnaire de bugs du plugin */
-	@ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE} )
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	private IssueManagement issueManagement;
 
 	/** Référentiel des releases et snapshots du plugin */
-	@ManyToMany( cascade = {CascadeType.PERSIST, CascadeType.MERGE} )
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	private List<Repository> repositories;
-	
+
 	/** Adresse du site Web de documentation */
 	@Pattern(message = "{com.mgreau.mvnbook.persistence.model.URL}", regexp = "^(http|https|ftp)\\://[a-zA-Z0-9\\-\\.]+\\.[a-zA-Z]{2,3}(:[a-zA-Z0-9]*)?/?([a-zA-Z0-9\\-\\._\\?\\,\\'/\\\\\\+&amp;%\\$#\\=~])*$")
 	private String url;
-	
-	@ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE} )
+
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	private Organization organization;
-	
+
 	/** Les versions disponibles pour ce plugin */
-	@ManyToMany( cascade = {CascadeType.PERSIST, CascadeType.MERGE} )
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	private List<PluginVersion> versions;
-	
-	public Plugin(){
+
+	public Plugin() {
 	}
 
 	/**
@@ -129,13 +131,15 @@ public class Plugin implements Serializable {
 		this.issueManagement = issueManagement;
 		this.url = url;
 	}
-	
+
 	/**
 	 * Ajoute une version au Plugin.
-	 * @param pv la version à ajouter
+	 * 
+	 * @param pv
+	 *            la version à ajouter
 	 */
-	public void addVersion(PluginVersion pv){
-		if (null == versions){
+	public void addVersion(PluginVersion pv) {
+		if (null == versions) {
 			versions = new ArrayList<PluginVersion>();
 		}
 		versions.add(pv);
@@ -276,7 +280,6 @@ public class Plugin implements Serializable {
 		this.issueManagement = issueManagement;
 	}
 
-	
 	/**
 	 * @return the url
 	 */
@@ -300,7 +303,8 @@ public class Plugin implements Serializable {
 	}
 
 	/**
-	 * @param organization the organization to set
+	 * @param organization
+	 *            the organization to set
 	 */
 	public void setOrganization(Organization organization) {
 		this.organization = organization;
@@ -314,12 +318,13 @@ public class Plugin implements Serializable {
 	}
 
 	/**
-	 * @param repositories the repositories to set
+	 * @param repositories
+	 *            the repositories to set
 	 */
 	public void setRepositories(List<Repository> repositories) {
 		this.repositories = repositories;
 	}
-	
+
 	/**
 	 * @return the versions
 	 */
@@ -328,12 +333,11 @@ public class Plugin implements Serializable {
 	}
 
 	/**
-	 * @param versions the versions to set
+	 * @param versions
+	 *            the versions to set
 	 */
 	public void setVersions(List<PluginVersion> versions) {
 		this.versions = versions;
 	}
-
-
 
 }
