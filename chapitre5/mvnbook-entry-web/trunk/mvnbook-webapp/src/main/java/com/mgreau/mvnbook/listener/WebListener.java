@@ -29,7 +29,7 @@ public class WebListener extends GuiceServletContextListener {
         protected void configureServlets() {      
         	// Struts 2 setup
             bind(StrutsPrepareAndExecuteFilter.class).in(Singleton.class);
-        	install(new JpaPersistModule("mvnbookJpaUnit")); 
+        	install(new JpaPersistModule("mvnbookJpa")); 
 
             filter("/*").through(PersistFilter.class);
             filter("/*").through(StrutsPrepareAndExecuteFilter.class);
