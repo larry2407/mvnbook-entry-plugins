@@ -54,7 +54,8 @@ public class ServiceLoadPom {
 	private JpaPluginDao pluginDao;
 
 	/** Logger */
-	private Logger logger = LoggerFactory.getLogger(ServiceLoadPom.class);
+	private final static Logger LOGGER = LoggerFactory
+			.getLogger(ServiceLoadPom.class);
 
 	/**
 	 * Constructeur
@@ -109,15 +110,16 @@ public class ServiceLoadPom {
 
 			model = getModel(unmarshaller, new FileInputStream(file));
 			p = pomModelToPlugin(model, category, type);
-			handleVersions(model, p);
+			manageVersions(model, p);
 		} catch (JAXBException e) {
 			throw new Exception("Erreur de création du ", e);
 		}
 
-		if(p != null  && p.getId() == null)
+		if (p != null && p.getId() == null) {
 			pluginDao.persist(p);
-		else
-		pluginDao.merge(p);
+		} else {
+			pluginDao.merge(p);
+		}
 
 		return p;
 	}
@@ -137,7 +139,7 @@ public class ServiceLoadPom {
 		// extension
 		if (!pom.getAbsolutePath().endsWith(".xml")
 				&& !pom.getAbsolutePath().endsWith(".pom")) {
-			logger.error("fichier incorrect, extensions pom ou xml requises.");
+			LOGGER.error("fichier incorrect, extensions pom ou xml requises.");
 			throw new ConstraintViolationException(
 					"extension de fichier incorrect", null);
 		}
@@ -145,14 +147,14 @@ public class ServiceLoadPom {
 		// schema
 		SchemaFactory sf = SchemaFactory
 				.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-		Schema schema = sf.newSchema( new File(this.getClass().getClassLoader()
+		Schema schema = sf.newSchema(new File(this.getClass().getClassLoader()
 				.getResource("maven-4.0.0.xsd").getFile()));
 
 		Validator validator = schema.newValidator();
 		// validator.set
 		JAXBContext jc = JAXBContext.newInstance(String.class);
 		JAXBSource source = new JAXBSource(jc, new StreamSource(pom));
-		//validator.validate(source);
+		// validator.validate(source);
 
 	}
 
@@ -162,7 +164,7 @@ public class ServiceLoadPom {
 	 * @param model
 	 * @param p
 	 */
-	protected PluginVersion handleVersions(Model model, Plugin p) {
+	protected PluginVersion manageVersions(Model model, Plugin p) {
 		// TODO gérer le prerequis
 		// new Prerequisite("maven", model.getPrerequisites().getMaven());
 		PluginVersion pv = new PluginVersion(p, model.getVersion(), null, null,
@@ -197,7 +199,7 @@ public class ServiceLoadPom {
 			if (model.getInceptionYear() != null)
 				p.setInceptionYear(sdf.parse(model.getInceptionYear()));
 		} catch (ParseException e) {
-			// générer un log erreur
+			LOGGER.error("Erreur pour le format de la date de création", e);
 		}
 		p.setIssueManagement(new IssueManagement(model.getIssueManagement()
 				.getSystem(), model.getIssueManagement().getUrl()));
@@ -224,7 +226,7 @@ public class ServiceLoadPom {
 	 */
 	private Model getModel(Unmarshaller unmarshaller, InputStream in)
 			throws JAXBException {
-		
+
 		return (Model) ((JAXBElement<Model>) unmarshaller.unmarshal(in))
 				.getValue();
 	}
