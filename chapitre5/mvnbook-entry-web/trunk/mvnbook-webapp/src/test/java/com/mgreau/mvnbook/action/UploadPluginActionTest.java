@@ -4,6 +4,9 @@ import java.io.File;
 
 import org.apache.struts2.StrutsTestCase;
 import org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter;
+import org.apache.struts2.tiles.StrutsTilesContainerFactory;
+import org.apache.tiles.TilesContainer;
+import org.apache.tiles.access.TilesAccess;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -31,9 +34,10 @@ public class UploadPluginActionTest extends StrutsTestCase {
 	 * Affichage de la page d'upload
 	 * @throws Exception
 	 */
-	public void ShowUploadFilePage() throws Exception {
-		//TODO corriger pb tiles (container null)
+	public void testShowUploadFilePage() throws Exception {
 		ActionProxy proxy = getActionProxy("/uploadPlugin");
+		TilesContainer container = new StrutsTilesContainerFactory().createContainer(servletContext);
+		TilesAccess.setContainer(servletContext, container);
 		String result = proxy.execute();
 		assertTrue("Expected a none result!", ActionSupport.NONE.equals(result));
 	}
@@ -43,20 +47,7 @@ public class UploadPluginActionTest extends StrutsTestCase {
 	 * Fichier d'upload obligatoire
 	 * @throws Exception
 	 */
-	public void fileUploadRequired() throws Exception {
-		//TODO corriger pb tiles (container null)
-		ActionProxy proxy = getActionProxy("/showPlugin");
-		String result = proxy.execute();
-		assertTrue("redirection vers INPUT attendu car fichier manquant !", ActionSupport.INPUT.equals(result));
-	}
-
-
-	/**
-	 * Test chargement d'un fichier POM
-	 * @throws Exception
-	 */
-	public void UploadFile() throws Exception {
-		//TODO corriger pb tiles (container null)
+	public void FileUploadRequired() throws Exception {
 		ServletModule mod = new ServletModule() {
 	        @Override
 	        protected void configureServlets() {      
@@ -67,6 +58,34 @@ public class UploadPluginActionTest extends StrutsTestCase {
 		injector.getInstance(PersistService.class).start();
 		injector.getInstance(UnitOfWork.class).begin();
 		servletContext.setAttribute(Injector.class.getName(), injector);
+		
+		TilesContainer container = new StrutsTilesContainerFactory().createContainer(servletContext);
+		TilesAccess.setContainer(servletContext, container);
+		
+		ActionProxy proxy = getActionProxy("/showPlugin");
+		String result = proxy.execute();
+		assertTrue("redirection vers INPUT attendu car fichier manquant !", ActionSupport.INPUT.equals(result));
+	}
+
+
+	/**
+	 * Test chargement d'un fichier POM
+	 * @throws Exception
+	 */
+	public void testUploadFile() throws Exception {
+		ServletModule mod = new ServletModule() {
+	        @Override
+	        protected void configureServlets() {      
+	            bind(Dao.class).to(JpaDao.class);
+	      }
+	    };
+		injector = Guice.createInjector(new JpaPersistModule("testUnit"), mod);
+		injector.getInstance(PersistService.class).start();
+		injector.getInstance(UnitOfWork.class).begin();
+		servletContext.setAttribute(Injector.class.getName(), injector);
+		
+		TilesContainer container = new StrutsTilesContainerFactory().createContainer(servletContext);
+		TilesAccess.setContainer(servletContext, container);
 		
 		ActionProxy proxy = getActionProxy("/showPlugin");
 		UploadPluginAction upload = (UploadPluginAction) proxy.getAction();
