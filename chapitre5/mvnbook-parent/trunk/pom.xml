@@ -155,6 +155,11 @@
 				<version>${struts2.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>org.apache.struts</groupId>
+				<artifactId>struts2-tiles-plugin</artifactId>
+				<version>${struts2.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>commons-logging</groupId>
 				<artifactId>commons-logging</artifactId>
 				<version>${commons.log.version}</version>
