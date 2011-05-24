@@ -17,7 +17,7 @@
 	<url>http://mvnbook.mgreau.com/sites/mvnbook-parent</url>
 
 	<scm>
-		<developerConnection>scm:svn:svn://92.243.13.123/chapitre5/mvnbook-entry-web/trunk</developerConnection>
+		<developerConnection>scm:svn:https://mvnbook-entry-plugins.googlecode.com/svn/chapitre5/mvnbook-entry-web/trunk</developerConnection>
 	</scm>
 
 	<modules>
