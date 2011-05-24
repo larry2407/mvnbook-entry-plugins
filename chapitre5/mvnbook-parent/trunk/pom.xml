@@ -95,6 +95,7 @@
 		<struts2.version>2.2.1.1</struts2.version>
 		<slf4j.version>1.6.1</slf4j.version>
 		<commons.log.version>1.1.1</commons.log.version>
+		<mysql.connector.version>5.1.16</mysql.connector.version>
 		<!-- dépendances tests -->
 		<junit.version>4.8.2</junit.version>
 		<hsqldb.version>2.0.0</hsqldb.version>
@@ -163,6 +164,11 @@
 				<groupId>commons-logging</groupId>
 				<artifactId>commons-logging</artifactId>
 				<version>${commons.log.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql.connector.version}</version>
 			</dependency>
 			<!-- Logs -->
 			<dependency>
