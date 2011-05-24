@@ -8,6 +8,12 @@ import org.slf4j.LoggerFactory;
 import com.mgreau.mvnbook.webservice.api.PluginWebService;
 import com.mgreau.mvnbook.webservice.api.WSException;
 
+/**
+ * Client pour appeler le WS d'ajout d'un plugin.
+ * 
+ * @author Maxime Gréau - SRE
+ *
+ */
 public class ClientWS {
 
 	Logger log = LoggerFactory.getLogger(ClientWS.class);
