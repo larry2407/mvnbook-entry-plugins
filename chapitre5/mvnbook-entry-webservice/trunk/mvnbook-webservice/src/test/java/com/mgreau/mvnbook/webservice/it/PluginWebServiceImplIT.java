@@ -9,16 +9,20 @@ import java.io.File;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.mgreau.mvnbook.webservice.PluginWebServiceImpl;
 
 /**
  * Tests du service d'Upload d'un POM.
  * 
- * @author mgreau
+ * @author Maxime Gréau <dev@mgreau.com>
  *
  */
 public class PluginWebServiceImplIT {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(PluginWebServiceImplIT.class);
 
 	
 	@Before
@@ -42,11 +46,12 @@ public class PluginWebServiceImplIT {
 		PluginWebServiceImpl ws = new PluginWebServiceImpl();
 		try {
 			String result = ws.addPlugin(pom);
-			assertNotNull("Result null", result);
+			assertNotNull("Le résultat est null", result);
 			assertTrue("Pas de SUCCESS dans le result", result.contains("SUCCESS"));
-			System.out.println(result);;
+			LOGGER.info("Resultat WS : " + result);
 		} catch (Exception e) {
 			fail("erreur");
+			LOGGER.error("Appel WS KO", e);
 		}
 	}
 }
