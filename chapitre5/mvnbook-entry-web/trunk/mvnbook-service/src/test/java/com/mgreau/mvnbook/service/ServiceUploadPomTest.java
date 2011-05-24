@@ -1,15 +1,12 @@
 package com.mgreau.mvnbook.service;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.io.InputStream;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.persistence.EntityManagerFactory;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.Unmarshaller;
@@ -19,19 +16,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.google.inject.Guice;
-import com.google.inject.Injector;
-import com.google.inject.persist.PersistService;
-import com.google.inject.persist.UnitOfWork;
-import com.google.inject.persist.jpa.JpaPersistModule;
-import com.mgreau.mvnbook.persistence.dao.JpaDao;
 import com.mgreau.mvnbook.persistence.model.Category;
-import com.mgreau.mvnbook.persistence.model.IssueManagement;
-import com.mgreau.mvnbook.persistence.model.Organization;
 import com.mgreau.mvnbook.persistence.model.Plugin;
-import com.mgreau.mvnbook.persistence.model.PluginVersion;
-import com.mgreau.mvnbook.persistence.model.Prerequisite;
-import com.mgreau.mvnbook.persistence.model.Repository;
 import com.mgreau.mvnbook.persistence.model.Type;
 
 /**
