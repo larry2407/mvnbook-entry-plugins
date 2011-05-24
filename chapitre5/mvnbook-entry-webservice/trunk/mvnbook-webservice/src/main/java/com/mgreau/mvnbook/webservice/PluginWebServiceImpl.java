@@ -4,10 +4,12 @@ import java.io.File;
 
 import javax.jws.WebService;
 
+import org.jvnet.jax_ws_commons.guicemanaged.GuiceManaged;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.inject.Guice;
+import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.google.inject.Singleton;
 import com.google.inject.persist.PersistFilter;
@@ -20,6 +22,7 @@ import com.mgreau.mvnbook.persistence.model.Plugin;
 import com.mgreau.mvnbook.service.ServiceLoadPom;
 import com.mgreau.mvnbook.webservice.api.PluginWebService;
 import com.mgreau.mvnbook.webservice.api.WSException;
+import com.mgreau.mvnbook.webservice.module.WebServiceModule;
 import com.sun.xml.ws.transport.http.servlet.ServletModule;
 
 /**
@@ -28,21 +31,30 @@ import com.sun.xml.ws.transport.http.servlet.ServletModule;
  * @author Maxime Gréau (dev@mgreau.com)
  * 
  */
+@GuiceManaged(module = WebServiceModule.class)
 @WebService(endpointInterface = "com.mgreau.mvnbook.webservice.api.PluginWebService")
 public class PluginWebServiceImpl implements PluginWebService {
 
 	private Logger logger = LoggerFactory.getLogger(PluginWebServiceImpl.class);
-
-	private Injector inj;
+	
+	/** Service de gestion des POM */
+	private ServiceLoadPom servicePom;
 
 	public PluginWebServiceImpl() {
-		inj = getInjector();
+	}
+	
+	@Inject
+	public PluginWebServiceImpl(ServiceLoadPom s) {
+		this.servicePom = s;
 	}
 
+	/**
+	 * Ajoute un plugin dans le système.
+	 * @return SUCCESS : "" si ok, ERROR sinon
+	 */
 	@Override
 	public String addPlugin(File pom) throws WSException {
 
-		ServiceLoadPom servicePom = inj.getInstance(ServiceLoadPom.class);
 		Plugin plugin = null;
 		try {
 			servicePom.validateFile(pom);
@@ -59,10 +71,5 @@ public class PluginWebServiceImpl implements PluginWebService {
 		return "ERROR";
 	}
 
-	protected Injector getInjector() {
-		inj = Guice.createInjector(new JpaPersistModule("myFirstJpaUnit"));
-		inj.getInstance(PersistService.class).start();
-		inj.getInstance(UnitOfWork.class).begin();
-		return inj;
-	}
+	
 }
