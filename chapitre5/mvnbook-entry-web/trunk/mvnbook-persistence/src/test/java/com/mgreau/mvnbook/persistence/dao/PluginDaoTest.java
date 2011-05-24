@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -58,8 +59,14 @@ public class PluginDaoTest {
 	}
 	
 	private Plugin getPlugin(){
-		Plugin plugin = new Plugin("maven war plugin",
-				"org.apache.maven.plugins", "maven-war-plugin",
+		String artifactId = "maven-war-plugin";
+		String name = "maven war plugin";
+		return getPlugin(name, artifactId);
+	}
+	
+	private Plugin getPlugin(String name, String artifactId){
+		Plugin plugin = new Plugin(name,
+				"org.apache.maven.plugins", artifactId,
 				"Création d'une archive WAR");
 
 		plugin.setInceptionYear(new Date());
@@ -128,7 +135,22 @@ public class PluginDaoTest {
 
 		assertTrue("plugin non recupére", p != null);
 		assertEquals("bad name", p.getName(), "maven war plugin");
-		
+	}
+	
+	/**
+	 * Liste de tous les plugins
+	 */
+	@Test
+	public void testFindAllPlugin() {
+		dao = injector.getInstance(JpaDao.class);
+
+		dao.persist(getPlugin());
+		dao.persist(getPlugin("jar plugin", "maven-jar-plugin"));
+		dao.persist(getPlugin("ear plugin", "maven-ear-plugin"));
+
+		Collection<Plugin> plugins = dao.findAll(Plugin.class);
+		assertTrue("aucun plugin trouvé", plugins != null);
+		assertTrue("", plugins.size() == 3);
 	}
 	
 	/**

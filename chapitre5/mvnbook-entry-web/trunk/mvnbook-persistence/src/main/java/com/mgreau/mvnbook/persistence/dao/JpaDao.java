@@ -1,6 +1,9 @@
 package com.mgreau.mvnbook.persistence.dao;
 
+import java.util.Collection;
+
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
@@ -52,5 +55,12 @@ public class JpaDao implements Dao {
 	public <T> void remove(T entity) {
 		lastEm = em.get();
 		lastEm.remove(entity);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public <T> Collection<T> findAll(Class<T> clazz) {
+		Query query = em.get().createQuery("SELECT o FROM " + clazz.getSimpleName() + " o");
+		return query.getResultList();
 	}
 }
