@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.mgreau.mvnbook</groupId>
         <artifactId>mvnbook-parent</artifactId>
-        <version>0.2-SNAPSHOT</version>
+        <version>0.4-SNAPSHOT</version>
     </parent>
     
 	<groupId>com.mgreau.mvnbook.webservice</groupId>
@@ -15,6 +15,11 @@
     
 	<name>mvnbook-entry-webservice</name>
 	<description>Reactor des projets pour l'accès à l'application par Web Service</description>
+	
+	<scm>
+		<connection>scm:svn:http://mvnbook-entry-plugins.googlecode.com/svn/chapitre5/mvnbook-entry-webservice/trunk/</connection>
+		<developerConnection>scm:svn:https://mvnbook-entry-plugins.googlecode.com/svn/chapitre5/mvnbook-entry-webservice/trunk/</developerConnection>
+	</scm>
 
 	<modules>
 		<module>mvnbook-api-webservice</module>
