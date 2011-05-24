@@ -57,7 +57,8 @@ public class PluginWebServiceImpl implements PluginWebService {
 
 		Plugin plugin = null;
 		try {
-			servicePom.validateFile(pom);
+			//FIXME : bug à la lecture du XSD
+			//servicePom.validateFile(pom);
 			plugin = servicePom.loadByPomFile(pom);
 		} catch (Exception e) {
 			logger.error("Le fichier POM est incorrect", e);
