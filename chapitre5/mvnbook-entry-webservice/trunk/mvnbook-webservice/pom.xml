@@ -28,17 +28,36 @@
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.google.inject</groupId>
-			<artifactId>guice</artifactId>
+			<groupId>com.google.inject.extensions</groupId>
+			<artifactId>guice-servlet</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.mgreau.mvnbook</groupId>
 			<artifactId>mvnbook-service</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<version>1.0.1-SNAPSHOT</version>
+		</dependency>
+		<!-- Guice pour JAX-WS -->
+		<dependency>
+			<groupId>org.jvnet.jax-ws-commons</groupId>
+			<artifactId>guicemanaged</artifactId>
+			<version>0.5</version>
+		</dependency>
+		<!-- TODO : gérer profil pour MySQL ou HSQLDB -->
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb-j5</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<!-- Test -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 	<build>
