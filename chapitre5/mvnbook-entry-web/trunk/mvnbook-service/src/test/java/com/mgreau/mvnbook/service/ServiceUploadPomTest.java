@@ -53,13 +53,13 @@ public class ServiceUploadPomTest {
 	/**
 	 * Test du service pour charger et sauvegarder un POM.
 	 */
-	@Test
-	public void testLoadPom() {
+	public void LoadPom() {
+		//@TODO Utiliser mockito pour mock de injection
 		ServiceLoadPom service = new ServiceLoadPom(null);
 		Category category = new Category("Packaging", "Package un projet");
 		Plugin pHelp = new Plugin("", "", "maven-help-plugin", "");
 		try {
-			//pHelp = service.loadByPomFile("maven-help-plugin-2.1.1.pom", category, Type.BUILD);
+			pHelp = service.loadByPomFile("maven-help-plugin-2.1.1.pom", category, Type.BUILD);
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getMessage());
