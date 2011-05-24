@@ -32,7 +32,7 @@ public class UploadPluginAction extends AbstractMvnBookAction {
     	plugin = service.loadByPomFile(fileUpload);
     	
     	if (plugin == null){
-    		log.error("Le plugin est null");
+    		logger.error("Le plugin est null");
     		return ERROR;
     	}
     	
