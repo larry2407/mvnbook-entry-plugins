@@ -5,13 +5,11 @@
 
   <div class="footer">
   	<ul class="clearfix">
-		<li><a href="01-Red-01-Home-Page.html">Home</a></li>
-		<li>| <a href="01-Red-03-Products-List.html">Features</a></li>
-		<li>| <a href="01-Red-02-Category-List.html">Products</a></li>
-		<li>| <a href="01-Red-05-Customer-Basket.html">Store Locator</a></li>
-		<li>| <a href="01-Red-05-Customer-Basket.html">About Us</a></li>
-		<li>| <a href="01-Red-05-Customer-Basket.html">Product Guidelines</a></li>
-		<li> | <a href="01-Red-05-Customer-Basket.html">Contact</a></li>
+		<li><a href="#">Accueil</a></li>
+		<li>| <a href="#">Ajouter un plugin</a></li>
+		<li>| <a href="#">Liste des plugins</a></li>
+		<li>| <a href="http://apache.maven.org">Site Apache Maven</a></li>
+		<li> | <a href="#">Contact</a></li>
 	</ul>
-    <div>&copy; Copyright 2010 OnlineStore | <a href="02-Orange-05-Customer-Basket.html">Terms &amp; Conditions</a> | <a href="02-Orange-05-Customer-Basket.html">Privacy Policy</a></div>
+    <div>&copy; Copyright 2011 mvnbook.mgreau.com | <a href="#">Contact</a> | <a href="#">Code Source du projet</a></div>
   </div>

@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>Classic Online Store</title>
+<title>MvnBook Entry-Plugins - Point d'entrée des plugins Maven</title>
 <link href="css/style.css" rel="stylesheet" type="text/css" />
 <link href="css/nav-menus.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
@@ -36,6 +36,15 @@ $(document).ready(function(){
 		<div class="content clearfix">
 			<tiles:insertAttribute name="sidebar-left" />
 			<div class="main_content">
+					<s:url id="linkUpload" action="uploadPlugin"  />
+					<s:url id="linkHome" action="home"  />
+				 	<h1 class="page_title">Gestion des plugins Apache Maven</h1>
+					<div class="bredcrum"><a href="./home.action">Accueil</a> &gt; <a href="./home.action">Liste des plugins</a> &gt;</div>
+					<div id="menu">
+					<ul>
+					<li><s:a href="%{linkUpload}">Ajouter un plugin</s:a></li>
+					</ul>
+					</div>
 				<tiles:insertAttribute name="content" />
 			</div>
 			<tiles:insertAttribute name="sidebar-right" />
