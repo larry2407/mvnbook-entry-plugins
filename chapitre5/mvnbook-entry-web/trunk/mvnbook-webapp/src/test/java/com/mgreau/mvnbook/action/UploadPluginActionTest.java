@@ -18,6 +18,11 @@ import com.mgreau.mvnbook.persistence.dao.JpaDao;
 import com.opensymphony.xwork2.ActionProxy;
 import com.opensymphony.xwork2.ActionSupport;
 
+/**
+ * 
+ * @author Maxime Gréau (dev@mgreau.com)
+ *
+ */
 public class UploadPluginActionTest extends StrutsTestCase {
 	
 	private Injector injector;
@@ -26,8 +31,8 @@ public class UploadPluginActionTest extends StrutsTestCase {
 	 * Affichage de la page d'upload
 	 * @throws Exception
 	 */
-	public void testShowUploadFilePage() throws Exception {
-
+	public void ShowUploadFilePage() throws Exception {
+		//TODO corriger pb tiles (container null)
 		ActionProxy proxy = getActionProxy("/uploadPlugin");
 		String result = proxy.execute();
 		assertTrue("Expected a none result!", ActionSupport.NONE.equals(result));
@@ -39,7 +44,7 @@ public class UploadPluginActionTest extends StrutsTestCase {
 	 * @throws Exception
 	 */
 	public void fileUploadRequired() throws Exception {
-
+		//TODO corriger pb tiles (container null)
 		ActionProxy proxy = getActionProxy("/showPlugin");
 		String result = proxy.execute();
 		assertTrue("redirection vers INPUT attendu car fichier manquant !", ActionSupport.INPUT.equals(result));
@@ -51,6 +56,7 @@ public class UploadPluginActionTest extends StrutsTestCase {
 	 * @throws Exception
 	 */
 	public void UploadFile() throws Exception {
+		//TODO corriger pb tiles (container null)
 		ServletModule mod = new ServletModule() {
 	        @Override
 	        protected void configureServlets() {      
