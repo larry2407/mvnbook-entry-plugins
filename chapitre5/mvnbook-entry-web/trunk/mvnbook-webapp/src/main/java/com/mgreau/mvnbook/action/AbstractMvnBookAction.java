@@ -10,15 +10,16 @@ import com.google.inject.Injector;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
- * 
- * @author mgreau
+ * Base de toutes les actions de l'application.
+ *  
+ * @author Maxime Gréau (dev@mgreau.com)
  *
  */
 @SuppressWarnings("serial")
 public abstract class AbstractMvnBookAction extends ActionSupport  implements ServletContextAware {
 
 	/** Logger */
-	protected Logger log =  LoggerFactory.getLogger(this.getClass());
+	protected final Logger logger =  LoggerFactory.getLogger(this.getClass());
 	
 	protected Injector inj;
 	
@@ -37,7 +38,7 @@ public abstract class AbstractMvnBookAction extends ActionSupport  implements Se
 			return executeMetier();
 		} catch (Exception e) {
 			exceptionCause = e.getCause() != null ? e.getCause().toString() : null;
-			log.error("Exception inattendue.", e);
+			logger.error("Exception inattendue.", e);
 			throw e;
 		}
     }
@@ -86,7 +87,5 @@ public abstract class AbstractMvnBookAction extends ActionSupport  implements Se
 	public void setExceptionCause(String exceptionCause) {
 		this.exceptionCause = exceptionCause;
 	}
-
-
 	
 }
