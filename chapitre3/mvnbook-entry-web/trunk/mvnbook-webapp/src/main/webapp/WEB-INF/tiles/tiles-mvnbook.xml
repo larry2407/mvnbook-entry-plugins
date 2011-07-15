@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?> 
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN" 
+"http://struts.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+	<definition name="mvnbook-default" template="/WEB-INF/layouts/layout-cir-default.jsp">
+		<put-attribute name="content" value="/WEB-INF/jsp/index.jsp" />
+		<put-attribute name="error" value="/WEB-INF/jsp/erreur.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/jsp/layouts/footer.jsp" />
+		<put-attribute name="header" value="/WEB-INF/jsp/layouts/header.jsp" />
+		<put-attribute name="sidebar-left" value="/WEB-INF/jsp/layouts/sidebar-left.jsp" />
+		<put-attribute name="sidebar-right" value="/WEB-INF/jsp/layouts/sidebar-right.jsp" />
+	</definition>
+	
+	<definition name="mvnbook-exception" extends="mvnbook-default">
+		<put-attribute name="content" value="/WEB-INF/jsp/exception.jsp" />
+	</definition>	
+	
+	<definition name="mvnbook-list" extends="mvnbook-default">
+		<put-attribute name="content" value="/WEB-INF/jsp/list.jsp" />
+	</definition>
+	
+	<definition name="mvnbook-show" extends="mvnbook-default">
+		<put-attribute name="content" value="/WEB-INF/jsp/show.jsp" />
+	</definition>
+	
+	<definition name="mvnbook-edit" extends="mvnbook-default">
+		<put-attribute name="content" value="/WEB-INF/jsp/edit.jsp" />
+	</definition>
+	
+	<definition name="mvnbook-search" extends="mvnbook-default">
+		<put-attribute name="content" value="/WEB-INF/jsp/search.jsp" />
+	</definition>
+</tiles-definitions>
