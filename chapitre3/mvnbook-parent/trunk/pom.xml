@@ -45,7 +45,7 @@
         <!-- dépendances -->
         <hibernate.entity.version>3.6.0.Final</hibernate.entity.version>
         <hibernate.validator.annotation.version>4.1.0.Final</hibernate.validator.annotation.version>
-        <guice.version>3.0-rc2</guice.version>
+        <guice.version>3.0</guice.version>
         <struts2.version>2.2.1.1</struts2.version>
         <slf4j.version>1.6.1</slf4j.version>
         <commons.log.version>1.1.1</commons.log.version>
