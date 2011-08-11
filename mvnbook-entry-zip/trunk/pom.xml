@@ -1,0 +1,67 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.mgreau.mvnbook</groupId>
+        <artifactId>mvnbook-parent</artifactId>
+        <version>0.4-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>mvnbook-entry-zip</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>mvnbook-entry-zip</name>
+    <description>Archive ZIP pour assembler les applications</description>
+    
+    <scm>
+		<connection>scm:svn:http://mvnbook-entry-plugins.googlecode.com/svn/chapitre5/mvnbook-entry-zip/trunk/</connection>
+		<developerConnection>scm:svn:https://mvnbook-entry-plugins.googlecode.com/svn/chapitre5/mvnbook-entry-zip/trunk/</developerConnection>
+	</scm>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.mgreau.mvnbook.webservice</groupId>
+            <artifactId>mvnbook-ear-webservice</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <type>ear</type>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>mvnbook-webapp</artifactId>
+            <version>1.0.1-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>mvnbook-command</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <finalName>mvnbook-entry</finalName>
+                    <appendAssemblyId>true</appendAssemblyId>
+                    <attach>true</attach>
+                    <descriptor>${project.basedir}/src/main/assembly/mvnbook-zip-bin.xml</descriptor>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>zip</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
