@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="mvnbook-webservice" version="2.4"
+	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>MvnBook Web Service</display-name>
+	<listener>
+		<listener-class>
+			com.sun.xml.ws.transport.http.servlet.WSServletContextListener
+        </listener-class>
+	</listener>
+	<listener>
+		<listener-class>com.mgreau.mvnbook.webservice.listener.GuiceLifecycleListener</listener-class>
+	</listener>
+
+	<filter>
+		<filter-name>guice</filter-name>
+		<filter-class>com.google.inject.servlet.GuiceFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>guice</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<servlet>
+		<servlet-name>webservice</servlet-name>
+		<servlet-class>
+			com.sun.xml.ws.transport.http.servlet.WSServlet
+        </servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>webservice</servlet-name>
+		<url-pattern>/ws-plugin</url-pattern>
+	</servlet-mapping>
+	<session-config>
+		<session-timeout>120</session-timeout>
+	</session-config>
+</web-app>

@@ -1,0 +1,31 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.mgreau.mvnbook</groupId>
+		<artifactId>mvnbook-parent</artifactId>
+		<version>0.4-SNAPSHOT</version>
+	</parent>
+
+	<groupId>com.mgreau.mvnbook.webservice</groupId>
+	<artifactId>mvnbook-entry-webservice</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>mvnbook-entry-webservice</name>
+	<description>Reactor des projets pour l'accès à l'application par Web Service</description>
+
+	<scm>
+		<connection>scm:svn:http://mvnbook-entry-plugins.googlecode.com/svn/chapitre5/mvnbook-entry-webservice/trunk/</connection>
+		<developerConnection>scm:svn:https://mvnbook-entry-plugins.googlecode.com/svn/chapitre5/mvnbook-entry-webservice/trunk/</developerConnection>
+	</scm>
+
+	<modules>
+		<module>mvnbook-api-webservice</module>
+		<module>mvnbook-client-webservice</module>
+		<module>mvnbook-webservice</module>
+		<module>mvnbook-command</module>
+		<module>mvnbook-ear-webservice</module>
+	</modules>
+</project>
