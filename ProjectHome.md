@@ -1,0 +1,1 @@
+Apache Maven est principalement basé sur la notion de plugins. Le projet mvnbook-entry-plugins permet un accès, à partir d'un unique emplacement, aux plugins Apache Maven quelque soit l'organisation qui les gère.
